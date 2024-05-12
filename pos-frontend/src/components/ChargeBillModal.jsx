@@ -99,7 +99,7 @@ const navigate = useNavigate();
       <option>Payment Mode</option>
     {["cash" , "credit"].map(paymentMetod => 
     
-      <option value={paymentMetod}>{paymentMetod === "cash" ? "Cash" : "Credit"}</option>
+      <option key={paymentMetod} value={paymentMetod}>{paymentMetod === "cash" ? "Cash" : "Credit"}</option>
 
     )}
     </Form.Select>

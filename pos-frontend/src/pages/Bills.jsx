@@ -1,13 +1,14 @@
 import { Col, Row, Table } from 'react-bootstrap'
 import { useGetBillsQuery, useGetOneBillQuery } from '../redux/slices/billsApiSlice'
 import BillDetailsModal from './../components/BillDetailsModal';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 
 const Bills = () => {
 const [showBillDetailsModal, setShowBillDetailsModal] = useState(false)
   const {data : bills} = useGetBillsQuery();
 const [billId, setBillId] = useState();
+
 
 const  handleOpenBillModal = (id) => {
   setBillId(id);

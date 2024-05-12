@@ -1,14 +1,22 @@
-import React from 'react'
-import { Button, Col, Form, ListGroup, Modal, Row, Table } from 'react-bootstrap'
+import React, { useRef } from 'react'
+import { Button, Col, ListGroup, Modal, Row, Table } from 'react-bootstrap'
 import { useGetOneBillQuery } from '../redux/slices/billsApiSlice';
+import { useReactToPrint } from 'react-to-print';
 
 const BillDetailsModal = ({showBillDetailsModal , setShowBillDetailsModal , billId}) => {
 
   const {data : oneBill} = useGetOneBillQuery(billId);
-
+  const componentRef = useRef();
   console.log(oneBill);
+
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   return (
-    <Modal
+<div>
+      <Modal
+  
     style={{ padding: "50px" }}
     show={showBillDetailsModal}
     className="p-5 fs-xs-7 fs-md-5 fw-md-bold"
@@ -26,7 +34,7 @@ const BillDetailsModal = ({showBillDetailsModal , setShowBillDetailsModal , bill
       ></i>
     </Modal.Header>
     <Modal.Body>
-<ListGroup variant="flush">
+<ListGroup variant="flush"   ref={componentRef}>
   <ListGroup.Item>
   <Row>
   <Col> <h3>Zef-POS</h3> </Col>
@@ -89,12 +97,14 @@ const BillDetailsModal = ({showBillDetailsModal , setShowBillDetailsModal , bill
 
     </Table>
   </ListGroup.Item>
-  <ListGroup.Item className='text-end '>
-    <Button variant='success'>Print Bill</Button>
-  </ListGroup.Item>
+
 </ListGroup>
+  <ListGroup.Item className='text-end '>
+    <Button variant='success' onClick={handlePrint}>Print Bill</Button>
+  </ListGroup.Item>
     </Modal.Body>
   </Modal>
+</div>
   )
 }
 

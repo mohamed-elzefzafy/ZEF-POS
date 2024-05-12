@@ -51,12 +51,12 @@ const Sidebar = () => {
     <br />
 
 
-    <Navbar className="bg-body-tertiary">
+    {/* <Navbar className="bg-body-tertiary">
       <LinkContainer  to="/">
       <Navbar.Brand><i className="bi bi-person"></i> Customers</Navbar.Brand>
       </LinkContainer>
     </Navbar>
-    <br />
+    <br /> */}
     <Navbar className="bg-body-tertiary">
       <LinkContainer to="/">
       <Navbar.Brand onClick={logoutHandler}><i className="bi bi-box-arrow-left"></i> Logout</Navbar.Brand>

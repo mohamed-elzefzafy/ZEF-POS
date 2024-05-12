@@ -22,9 +22,9 @@ const Header = () => {
 
 {userInfo && userInfo?.name &&  
 <div className='d-flex gap-3 align-items-center '>
-    <Link className='fs-2 text-warning ' to="/cart">
+    {/* <Link className='fs-2 text-warning ' to="/cart"> */}
     <Image src={userInfo?.profilePhoto?.url} fluid width={40} height={40} roundedCircle/>
-  </Link>
+  {/* </Link> */}
     <LinkContainer className='fs-2 text-warning ' to="/cart">
         <div className='fs-4 '>{userInfo?.name}</div>
   </LinkContainer>
